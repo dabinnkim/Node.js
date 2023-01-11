@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 
-app.listen(8080, function(){ //서버를 염
+app.listen(8080, function(){ //서버를 열어줌
     console.log('listening on 8080')
 });
 
