@@ -65,22 +65,22 @@ app.get('/write', function (req, res) { //write로 들어가면 write.html 파�
 
 //몽고DB에 input 데이터 저장
 app.post('/add', function (req, res) {
-    db.collection('counter').findOne({name:'게시물갯수'},function(에러, 결과){
+    db.collection('counter').findOne({name:'게시물갯수'},function(에러, 결과){ //counter에서 원하는 값 찾기
         console.log(결과.totalPost)
         var 총게시물개수 = 결과.totalPost
 
         db.collection('post').insertOne({_id:총게시물개수+1,title: req.body.title, date: req.body.date}, function (에러, 결과) {
             console.log('add로 저장완료')
             //counter라는 콜렉션에 있는 totalPost 라는 항목도 post에 데이터 항목이 추가 될때마다 1씩 증가해야됨
+            //counter에서 name이 게시물갯수인 데이터 중 totalPost의 데이터를 +1 해주세요
             db.collection('counter').updateOne({name:'게시물갯수'},{$inc : {totalPost:1}},function(에러, 결과){
                 if(에러){return console.log(에러)}
                 res.send('전송완료')
             })
         });
-
-
     });
 });
+
 
 //몽고DB에 저장한 데이터 보여주는 페이지 만들기
 app.get('/list',function(req,res){

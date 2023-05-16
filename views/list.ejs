@@ -33,17 +33,29 @@
 
       <!--서버에서 가져온 할일 리스트-->
       <!--ejs 문법을 써서 반복문 실행시키기-->
-      <% for(var i =0; i<posts.length; i++){ %> <!--반복문 돌릴 횟수는 데이터의 길이!만큼이므로 length-->
+      <!--반복문 돌릴 횟수는 데이터의 길이!만큼이므로 length-->
+      <!-- <% for(var i =0; i<posts.length; i++){ %> 
       <h4>할일 제목 : <%= posts[i].title %></h4>
       <p>할일 마감 날짜 : <%= posts[i].date %></p>
-      <% } %>
+      <button id="btn">삭제</button>
+      <% } %> -->
+
 <!-- 
       <h4>할일 : <%= posts[0].title %></h4>
       <p>날짜 : <%= posts[0].date %></p>
 
       <h4>할일 : <%= posts[1].title %></h4>
       <p>날짜 : <%= posts[1].date %></p> -->
-
+      
+      <ul class="list-group">
+        <% for(var i =0; i<posts.length; i++){ %>
+        <li class="list-group-item">
+          <h4>할일 제목 : <%= posts[i].title %></h4>
+          <p>할일 마감 날짜 : <%= posts[i].date %></p>
+          <button id="btn">삭제</button>
+        </li>
+        <% } %>
+      </ul>
 
 
 
